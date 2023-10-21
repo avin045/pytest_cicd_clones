@@ -1,7 +1,12 @@
 name: Build
 
 on:
-  push
+  push:
+  workflow_dispatch:
+    inputs:
+      custom_input:
+        description: 'Custom input parameter'
+        required: true
 
 env:
   snow_user: ${{ secrets.SNOW_USER }}

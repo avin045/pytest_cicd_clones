@@ -4,14 +4,6 @@ import logging
 import os
 import subprocess
 
-custom_input = input("Enter the custom input: ")
-
-# Trigger the GitHub Actions workflow with the input parameter
-trigger_workflow_command = f'gh workflow run main.yml -f custom_input={custom_input}'
-subprocess.run(trigger_workflow_command, shell=True, check=True)
-
-print(custom_input)
-
 
 # pytest -v -s pytest_cicd.py
 # pytest -o log_cli=true -v -s pytest_cicd.py
@@ -74,8 +66,6 @@ file_path = r'./transformation_query/query.sql';
 file_content = open(file=file_path,mode='r+');
 query = file_content.read();
 # print(query)
-
-logger.info(custom_input)
 
 # '''
 # source & target CHECK
