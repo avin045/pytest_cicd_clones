@@ -1,0 +1,99 @@
+INFO     root:main.py:16 STARTED
+INFO     snowflake.connector.connection:connection.py:312 Snowflake Connector for Python Version: 3.1.0, Python Version: 3.10.0, Platform: Windows-10-10.0.22621-SP0
+INFO     snowflake.connector.connection:connection.py:1048 This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+INFO     snowflake.connector.connection:connection.py:1066 Setting use_openssl_only mode to False
+INFO     snowflake.snowpark.session:session.py:393 Snowpark Session information: 
+"version" : 1.6.1,
+"python.version" : 3.10.0,
+"python.connector.version" : 3.1.0,
+"python.connector.session.id" : 1661800156532770,
+"os.name" : Windows
+
+INFO     snowflake.connector.cursor:cursor.py:804 query: [use database HR_DB]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [use schema HR_SCHEMA]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [use warehouse COMPUTE_WH]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [select SPLIT(TRIM(split(EMPLOYEE_NAME,',')[1]::varchar),' ')[0]::text as FIRSTNA...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT  *  FROM (HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC)]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM (select SPLIT(TRIM(split(EMPLOYEE_NAM...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOYEE_...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM (select SPLIT(TRIM(split(EMPLOYEE_NAM...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOYEE_...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     root:main.py:54 ROWCOUNT => The count of Source : 311 and Target : 311 Matching : True
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM (select SPLIT(TRIM(split(EMPLOYEE_NAM...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOYEE_...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [select SPLIT(TRIM(split(EMPLOYEE_NAME,',')[1]::varchar),' ')[0]::text as FIRSTNA...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT  *  FROM HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "DATEOFHIRE", "DATEOFTERMINATION", "DEPARTMENT", "DOB", "EMPID", "EMPLOYM...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "DATEOFHIRE", "DATEOFTERMINATION", "DEPARTMENT", "DOB", "EMPID", "EMPLOYM...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [( SELECT "DATEOFHIRE", "DATEOFTERMINATION", "DEPARTMENT", "DOB", "EMPID", "EMPLO...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     root:main.py:62 DATA MISMATCH : PASSED
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION", count(1) AS "COUNT" FROM ( SELECT "EMP...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT  *  FROM ( SELECT "EMPID", "DEPARTMENT", "POSITION", count(1) AS "COUNT" ...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     root:main.py:71 DUPLICATES OR NOT : PASSED
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOY...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOYEE_...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOY...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT "EMPID", "DEPARTMENT", "POSI...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     root:main.py:79 NULL CHECK : PASSED
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOYEE_...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT "EMPID", "DEPARTMENT", "POSITION" FROM ( SELECT  *  FROM HR_SCHEMA.EMPLOY...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 0
+INFO     snowflake.connector.cursor:cursor.py:804 query: [SELECT count(1) AS "COUNT(LITERAL())" FROM ( SELECT "EMPID", "DEPARTMENT", "POSI...]
+INFO     snowflake.connector.cursor:cursor.py:817 query execution done
+INFO     snowflake.connector.cursor:cursor.py:959 Number of results in first chunk: 1
