@@ -2,7 +2,13 @@ from snowflake.snowpark import Session
 from snowflake.snowpark.dataframe import col
 import logging
 import os
-import subprocess
+import json
+
+
+
+# Parse the JSON string into a Python dictionary
+json_str = open('./config/config.json','r+').read()
+config_dict = json.loads(json_str)
 
 
 # pytest -v -s pytest_cicd.py
@@ -10,7 +16,7 @@ import subprocess
 # pytest -o log_cli=true -v -s pytest_cicd.py
 # pytest --log-file=test_log.txt test_example.py
 
-
+# """
 # Create and configure logger
 def setup_logger():
     with open("pytest.log", 'w'):
@@ -44,8 +50,8 @@ logger = setup_logger()
 user = os.environ.get("snow_user")
 password = os.environ.get("snow_pwd")
 account = os.environ.get("snow_acc")
-warehouse='COMPUTE_WH'
-role = 'ACCOUNTADMIN'
+warehouse = config_dict['warehouse']
+role = config_dict['role']
 
 
 connection_parameters = {
@@ -58,24 +64,28 @@ connection_parameters = {
 
 session = Session.builder.configs(connection_parameters).create()
 
-session.use_database(database='HR_DB');
-session.use_schema(schema='HR_SCHEMA');
-session.use_warehouse(warehouse='COMPUTE_WH');
+session.use_database(database=config_dict['database']);
+session.use_schema(schema=config_dict['schema']);
+session.use_warehouse(warehouse=config_dict['warehouse']);
 
 file_path = r'./transformation_query/query.sql';
 file_content = open(file=file_path,mode='r+');
 query = file_content.read();
 # print(query)
 
+# """
 # '''
 # source & target CHECK
 src = session.sql(query=query.replace(';',''));
-target = session.table(name='HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC');
+target = session.table(name=config_dict['target']);
 
 # INPUT for Getting COLUMNS LIST
 # columns_list = input("Enter the column list with ',' seperated : ").split(',')
-columns_list = "EMPID,DEPARTMENT,POSITION".split(',')
+columns_list = config_dict['columns_list_duplicates_or_not'].split(',')
 list_of_cols = [col_.strip() for col_ in columns_list]
+
+columns_list_null_check = config_dict["columns_list_null_check"].split(',')
+list_of_cols_nc = [col_.strip() for col_ in columns_list]
 
 def test_rowcount():
     logger.info(f"ROWCOUNT => The count of Source : {src.count()} and Target : {target.count()} Matching : {src.count() == target.count()}")
@@ -100,10 +110,10 @@ def test_duplicates_or_not():
 
 def test_null_check():
     null_columns = ','.join([
-    col_ for col_ in target.select(list_of_cols).columns if target.select(list_of_cols).where(target.select(list_of_cols).col(col_).is_null()).collect()
+    col_ for col_ in target.select(list_of_cols_nc).columns if target.select(list_of_cols_nc).where(target.select(list_of_cols_nc).col(col_).is_null()).collect()
     ])
-    log_res = 'PASSED' if target.count() == target.select(list_of_cols).dropna().count() else 'NOT PASSED'
+    log_res = 'PASSED' if target.count() == target.select(list_of_cols_nc).dropna().count() else 'NOT PASSED'
     logger.info(f"NULL CHECK : {log_res}")
-    assert True if target.count() == target.select(list_of_cols).dropna().count() else False, f"The Null Columns are {null_columns}"
+    assert True if target.count() == target.select(list_of_cols_nc).dropna().count() else False, f"The Null Columns are {null_columns}"
 
 # '''
