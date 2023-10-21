@@ -70,7 +70,8 @@ src = session.sql(query=query.replace(';',''));
 target = session.table(name='HR_SCHEMA.EMPLOYEE_DETAILS_DYNAMIC');
 
 # INPUT for Getting COLUMNS LIST
-columns_list = input("Enter the column list with ',' seperated : ").split(',')
+# columns_list = input("Enter the column list with ',' seperated : ").split(',')
+columns_list = "EMPID,DEPARTMENT,POSITION".split(',')
 list_of_cols = [col_.strip() for col_ in columns_list]
 
 def test_rowcount():
