@@ -13,8 +13,8 @@ use schema hr_schema;
 /* STAGE for "EMPLOYEE DETAILS" */
 create or replace stage hr_data_stage
 url = 's3://data-in-bucket/Human-Resources-Data-Set/'
-CREDENTIALS = (AWS_KEY_ID = 'AKIA5NV2RLOOWM2Y2QG2'
-               AWS_SECRET_KEY = 'QjEmt00fdiP9yy/dlTl5UGPIORkxQevPgXqAE8w5');
+CREDENTIALS = (AWS_KEY_ID = 'AWS_KEY_ID'
+               AWS_SECRET_KEY = 'AWS_SECRET_KEY');
 
 
 /* FILE FORMAT */
