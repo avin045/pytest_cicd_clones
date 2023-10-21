@@ -13,14 +13,14 @@ import subprocess
 
 # Create and configure logger
 def setup_logger():
-    with open("./log_/pytest.log", 'w'):
+    with open("pytest.log", 'w'):
         pass  # 'pass' is a no-op statement that does nothing
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)  # Set the desired log level (INFO, DEBUG, ERROR, etc.)
 
     # Create a log file handler to write log messages to a file
-    log_file = './log_/pytest.log'
+    log_file = 'pytest.log'
     file_handler = logging.FileHandler(log_file)
     file_handler.setLevel(logging.INFO)  # Set log level for the file handler
 
