@@ -75,6 +75,8 @@ file_content = open(file=file_path,mode='r+');
 query = file_content.read();
 # print(query)
 
+logger.info(custom_input)
+
 # '''
 # source & target CHECK
 src = session.sql(query=query.replace(';',''));
