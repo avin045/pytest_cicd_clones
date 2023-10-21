@@ -19,8 +19,8 @@ config_dict = json.loads(json_str)
 # """
 # Create and configure logger
 def setup_logger():
-    with open("pytest.log", 'w'):
-        pass  # 'pass' is a no-op statement that does nothing
+    # with open("pytest.log", 'w'):
+    #     pass  # 'pass' is a no-op statement that does nothing
 
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)  # Set the desired log level (INFO, DEBUG, ERROR, etc.)
@@ -68,7 +68,7 @@ session.use_database(database=config_dict['database']);
 session.use_schema(schema=config_dict['schema']);
 session.use_warehouse(warehouse=config_dict['warehouse']);
 
-file_path = r'./transformation_query/query.sql';
+file_path = config_dict['src'];
 file_content = open(file=file_path,mode='r+');
 query = file_content.read();
 # print(query)
