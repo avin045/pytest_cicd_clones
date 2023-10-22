@@ -49,7 +49,7 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: development
+          from_branch: demo
           target_branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
