@@ -1,0 +1,4 @@
+2023-10-22 17:44:09,472 - test_main - INFO - ROWCOUNT => The count of Source : 311 and Target : 311 Matching : True
+2023-10-22 17:44:11,129 - test_main - INFO - DATA MISMATCH : PASSED
+2023-10-22 17:44:11,604 - test_main - INFO - DUPLICATES OR NOT : PASSED
+2023-10-22 17:44:13,277 - test_main - INFO - NULL CHECK : PASSED
