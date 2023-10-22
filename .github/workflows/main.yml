@@ -36,11 +36,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Tests
-        run: pytest -v -s
-
-      - name: List Contents of Working Directory
-        run: dir
-        working-directory: ${{ github.workspace }}
+        run: pytest -v
 
       - name: commit files
         run: |
