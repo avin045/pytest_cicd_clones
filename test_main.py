@@ -25,7 +25,7 @@ if os.path.exists(log_file):
         pass
 
 # Create and configure logger
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__) # Github Stored in Log as UTC Timezone | Example => IST : 4:13PM UTC : 10:43 AM (-5.5 hrs)
 logger.setLevel(logging.DEBUG)
 logger_file_handler = logging.handlers.RotatingFileHandler(
     filename="pytest.log",
