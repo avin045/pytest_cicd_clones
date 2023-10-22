@@ -18,6 +18,12 @@ config_dict = json.loads(json_str)
 # pytest --log-file=test_log.txt test_example.py
 
 # """
+# Remove or truncate the existing log file
+log_file = "pytest.log"
+if os.path.exists(log_file):
+    with open(log_file, "w"):  # Open the file in "write" mode, which truncates it
+        pass
+
 # Create and configure logger
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
