@@ -38,6 +38,14 @@ jobs:
       - name: Run Tests
         run: pytest -v
 
+      - name: Raise PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: "demo"
+          base: demo
+          title: "Demo for auto Pr"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
