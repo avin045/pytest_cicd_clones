@@ -20,9 +20,9 @@ config_dict = json.loads(json_str)
 # """
 # Create and configure logger
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 logger_file_handler = logging.handlers.RotatingFileHandler(
-    "pytest.log",
+    filename="pytest.log",
     maxBytes=1024 * 1024,
     backupCount=1,
     encoding="utf8",

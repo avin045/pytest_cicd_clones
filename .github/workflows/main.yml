@@ -4,6 +4,7 @@ on:
   push
 
 env:
+  ACTIONS_RUNNER_DEBUG: true
   snow_user: ${{ secrets.SNOW_USER }}
   snow_pwd: ${{ secrets.SNOW_PASSWORD }}
   snow_acc: ${{ secrets.SNOW_ACCOUNT }}
@@ -36,3 +37,8 @@ jobs:
 
       - name: Run Tests
         run: pytest -v -s
+
+      - name: List Contents of Working Directory
+        run: |
+          ls -al
+        working-directory: ${{ github.workspace }}
