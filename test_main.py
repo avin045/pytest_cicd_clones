@@ -1,6 +1,7 @@
 from snowflake.snowpark import Session
 from snowflake.snowpark.dataframe import col
 import logging
+import logging.handlers
 import os
 import json
 
@@ -18,34 +19,19 @@ config_dict = json.loads(json_str)
 
 # """
 # Create and configure logger
-def setup_logger():
-    # with open("pytest.log", 'w'):
-    #     pass  # 'pass' is a no-op statement that does nothing
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger_file_handler = logging.handlers.RotatingFileHandler(
+    "pytest.log",
+    maxBytes=1024 * 1024,
+    backupCount=1,
+    encoding="utf8",
+)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger_file_handler.setFormatter(formatter)
+logger.addHandler(logger_file_handler)
 
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)  # Set the desired log level (INFO, DEBUG, ERROR, etc.)
-
-    # Create a log file handler to write log messages to a file
-    log_file = 'pytest.log'
-    file_handler = logging.FileHandler(log_file)
-    file_handler.setLevel(logging.INFO)  # Set log level for the file handler
-
-    # Create a console handler to print log messages to the console
-    # console_handler = logging.StreamHandler()
-    # console_handler.setLevel(logging.INFO)  # Set log level for the console handler
-
-    # Create a formatter to define the format of log messages
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_handler.setFormatter(formatter)
-    # console_handler.setFormatter(formatter)
-
-    # Add handlers to the logger
-    logger.addHandler(file_handler)
-    # logger.addHandler(console_handler)
-
-    return logger
-
-logger = setup_logger()
+# logger = setup_logger()
 
 user = os.environ.get("snow_user")
 password = os.environ.get("snow_pwd")
