@@ -8,8 +8,8 @@ on:
     inputs:
       username:
         description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
+        # default: 'john-doe'
+        required: true
         type: string
 env:
   ACTIONS_RUNNER_DEBUG: true
