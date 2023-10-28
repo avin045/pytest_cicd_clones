@@ -1,7 +1,9 @@
 name: Build Clone PL
 
 on:
-  push
+  push:
+    branches:
+      - main
 
 env:
   ACTIONS_RUNNER_DEBUG: true
@@ -13,20 +15,24 @@ jobs:
   run-tests:
     strategy:
       fail-fast: false
-      matrix: 
+      matrix:
         os: [windows-latest]
         python-version:
           - "3.10"
-    
     name: Test
     runs-on: ${{ matrix.os }}
+
+    inputs:
+      db_name:
+        description: 'Database Name'
+        required: true
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -38,14 +44,14 @@ jobs:
       - name: Run Tests
         run: pytest -v
 
-      - name: commit files
+      - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
-          
-      - name: push changes
+          git diff-index --quiet HEAD || (git commit -a -m "Updated logs" --allow-empty)
+
+      - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
