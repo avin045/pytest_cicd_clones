@@ -17,6 +17,7 @@ env:
   snow_user: ${{ secrets.SNOW_USER }}
   snow_pwd: ${{ secrets.SNOW_PASSWORD }}
   snow_acc: ${{ secrets.SNOW_ACCOUNT }}
+  user_name: ${{ github.event.inputs.username }}
 
 jobs:
   run-tests:
