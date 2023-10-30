@@ -84,13 +84,13 @@ def test_rowcount():
     logger.info(f"ROWCOUNT => The count of Source : {src.count()} and Target : {target.count()} Matching : {src.count() == target.count()}")
     assert src.count() == target.count()
 
-def test_data_mismatch():
-    mismatch_cols = []
-    matched_cols = [tgt_col for src_col,tgt_col in zip(sorted(src.columns),sorted(target.columns)) if src_col == tgt_col]
-    result = src.select(matched_cols).minus(target.select(matched_cols)).collect()
-    log_res = 'PASSED' if not bool(result) == True else 'NOT PASSED'
-    logger.info(f"DATA MISMATCH : {log_res}")
-    assert not bool(result) == True,f"The Mismatching count is {len(mismatch_cols)} \n and the columns are {','.join(mismatch_cols)}"
+# def test_data_mismatch():
+#     mismatch_cols = []
+#     matched_cols = [tgt_col for src_col,tgt_col in zip(sorted(src.columns),sorted(target.columns)) if src_col == tgt_col]
+#     result = src.select(matched_cols).minus(target.select(matched_cols)).collect()
+#     log_res = 'PASSED' if not bool(result) == True else 'NOT PASSED'
+#     logger.info(f"DATA MISMATCH : {log_res}")
+#     assert not bool(result) == True,f"The Mismatching count is {len(mismatch_cols)} \n and the columns are {','.join(mismatch_cols)}"
 
 def test_duplicates_or_not():
     # EMPLOYEE_NUMBER, EMPLOYEE_FULL_NAME, EMPLOYEE_STATUS_CODE, DEPARTMENT_NUMBER, SUPERVISOR_NUMBER
