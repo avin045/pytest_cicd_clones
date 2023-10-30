@@ -39,7 +39,8 @@ logger.addHandler(logger_file_handler)
 
 # logger = setup_logger()
 
-user = os.environ.get("snow_user")
+# user = os.environ.get("snow_user")
+user = os.environ.get("user_name")
 password = os.environ.get("snow_pwd")
 account = os.environ.get("snow_acc")
 warehouse = config_dict['warehouse']
